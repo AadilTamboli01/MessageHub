@@ -68,6 +68,22 @@ export const useAuthStore = create((set) => ({
       toast.success("Logged out Successfully")
     } catch (error) {
       console.log("error in the logout frontend")
+      toast.error(error.message)
     }
   }
-}
+  ,
+
+  updateProfile: async (data) => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/update-profile`, data, {
+        withCredentials: true
+      })
+      set({ authUser: res.data })
+      toast.success("Profile updated Successfully!")
+
+    } catch (error) {
+      console.log("error in the update frofile")
+      toast.error(error.message)
+    }
+  }
+})) 
