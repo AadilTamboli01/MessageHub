@@ -26,11 +26,14 @@ export const useAuthStore = create((set) => ({
 
 
   signup: async (data) => {
+       console.log("Signup sending data to frontend is ", data)
     set({ isSigningUp: true })
     try {
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, data, {
         withCredentials: true
       })
+
+      console.log("Signup sending data to frontend is ", data)
       set({ authUser: res.data });
       toast.success("Account created successfully !");
 
@@ -43,7 +46,8 @@ export const useAuthStore = create((set) => ({
   }
   ,
   login: async (data) => {
-    set({ isLogingIn: true })
+     console.log("login  sending data to frontend is ", data)
+    set({ isLoggingIn: true })
     try {
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, data, {
         withCredentials: true
@@ -55,7 +59,7 @@ export const useAuthStore = create((set) => ({
       console.log("erro in the signup function ")
       toast.error(error.message)
     } finally {
-      set({ isLogingIn: false })
+      set({ isLoggingIn: false })
     }
   }
   ,

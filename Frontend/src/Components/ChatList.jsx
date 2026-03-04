@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useAuthStore } from '../Store/useAuthStore'
 import UserLoadingSkeleton from './UserLoadingSkeleton'
 
-const ChatLimyst = () => {
+const ChatList = () => {
   const { isUsersLoading, chats, getMyChatPartners, setSelectedUser } = useAuthStore()
   useEffect(() => {
     getMyChatPartners();
